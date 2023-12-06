@@ -1,5 +1,6 @@
 function [y] = find_numLink(k_total, L, L_inter_Repeater)
 %--------------------------------------------------------------------------
+% This function finds the most efficient resource allocation, searching through the possibilities and return the one with the highest E2E Rate
 N = 10000;
 sigGKP=0.12;
 etad=0.99;
@@ -16,6 +17,7 @@ end
 K = [k1,k2];
 clear k1 k2 i L_inter_Repeater v_simulated
 %--------------------------------------------------------------------------
+% Two discard windows 
 ErrProb3Sigma = [LogErrAfterPost(sqrt(3*sigGKP^2 + (1-etad)/etad),v(1)),...
     LogErrAfterPost(sqrt(3*sigGKP^2 + (1-etad)/etad),v(2))];
 ErrProb2Sigma = [LogErrAfterPost(sqrt(2*sigGKP^2 + (1-etad)/etad),0.7*v(1)),...
@@ -33,6 +35,7 @@ for j = 1:size(K,1)
 end
 
 clear j
+% The allocation 
 max_index = K(:,3) == max(K(:,3));
 y = [L,...
     K(max_index,1)/k_total,...
