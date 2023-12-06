@@ -2,6 +2,7 @@ function [ZerrOuter_1, XerrOuter_1, ZerrOuter_2, XerrOuter_2] = Outer_Sim(...
     L, L_inter_Repeater, v_simulated, sigGKP, etad, comb_vec, k_vector_j,...
     N)
 
+% Keeping track of each end-user link 
 v = v_simulated(max(L)==L_inter_Repeater);
 ErrProb3Sigma = LogErrAfterPost(sqrt(3*sigGKP^2 + (1-etad)/etad),v);
 ErrProb2Sigma = LogErrAfterPost(sqrt(2*sigGKP^2 + (1-etad)/etad),0.7*v);
