@@ -1,10 +1,10 @@
 function [ZerrInner, XerrInner, sTotal] = Inner_Sim(N, L, sigGKP, etad, n, ErrProb3Sigma, ErrProb2Sigma)
 
+% This function Simulates inner leaves
 XerrInner = zeros(1,2);
 ZerrInner = zeros(1,2);
 sTotal = zeros(1,2);
 
-%Simulate inner leaves
 parfor i = 1:N
     [logErrInner, s] = InnerLeaves(L, sigGKP, etad, n, ErrProb3Sigma, ErrProb2Sigma);
     tZ = zeros(1,2);
