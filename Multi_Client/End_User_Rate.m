@@ -1,6 +1,7 @@
 function [Rate] = Inner_and_Outer(L_Inner, comb_vec, k_vector_j,...
     sigGKP, etad, round_num, N, L, L_inter_Repeater, v_simulated)
 %--------------------------------------------------------------------------
+% This function calculates each end-users rate separately 
 %Inner Leaves
 %The window that we choose is according to the Data Center
 v = v_simulated(L_Inner==L_inter_Repeater);
