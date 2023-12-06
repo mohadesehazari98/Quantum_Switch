@@ -1,5 +1,6 @@
 function out = SecretKey6StateEndToEnd(Zerr_1, Xerr_1, Zerr_2, Xerr_2, sTotal_1, sTotal_2, k)
 
+% This function calculates the E2E Rate while the X/Z logical error probability of the right channel is different from the left channel
 parfor i = 1:numel(Zerr_1)
     if Zerr_1(i) > 0.5
         Zerr_1(i) = 0.5;
@@ -20,6 +21,7 @@ parfor i = 1:numel(Zerr_2)
     end
 end
 
+% The number of elementary links 
 NoLinks = 2;
 Zerr = cell(2,1);Zerr{1,1}=Zerr_1;Zerr{2,1}=Zerr_2;
 Xerr = cell(2,1);Xerr{1,1}=Xerr_1;Xerr{2,1}=Xerr_2;
@@ -31,7 +33,7 @@ pZ = zeros(1,2^(NoLinks));
 pX = zeros(1,2^(NoLinks));
 
 binary_m = dec2bin(0:1:2^(NoLinks)-1);
-%For each bin we calculate the corresponding error and the corresponding
+%For each bin, we calculate the corresponding error and the corresponding
 %probability.
 for i=1:2^(NoLinks)
     m=[str2double(binary_m(i,1)),str2double(binary_m(i,2))];
@@ -40,8 +42,10 @@ for i=1:2^(NoLinks)
     MultipZ=1;
     MultipX=1;
     for j=1:NoLinks
+        % Q E2E
         MultiZ = MultiZ .* ((1 - 2 * Zerr{j,1}(1:k,2)).^(m(j))) .* ((1 - 2 * Zerr{j,1}(1:k,1)).^(1-m(j)));
         MultiX = MultiX .* ((1 - 2 * Xerr{j,1}(1:k,2)).^(m(j))) .* ((1 - 2 * Xerr{j,1}(1:k,1)).^(1-m(j)));
+        % t
         MultipZ = MultipZ .* ((sTotal{j,1}(1)).^(m(j))) .* ((1-sTotal{j,1}(1)).^(1-m(j))); 
         MultipX = MultipX .* ((sTotal{j,1}(2)).^(m(j))) .* ((1-sTotal{j,1}(2)).^(1-m(j)));
     end
