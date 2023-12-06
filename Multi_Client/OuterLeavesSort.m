@@ -1,6 +1,7 @@
 function [ logErrOuterMat ] = OuterLeavesSort( L, sigGKP, etad, L_inter_Repeater, v_simulated,...
     k_vector_j, two_combinations)
 
+% This function globally sorts the client's links
 logErrOuter = cell(size(two_combinations,1),1);
 for i=1:size(two_combinations,1)
     l = L(two_combinations(i,1));
