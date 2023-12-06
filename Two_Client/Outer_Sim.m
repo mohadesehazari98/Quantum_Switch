@@ -1,4 +1,6 @@
 function [ ZerrOuter, XerrOuter ] = Outer_Sim( N, l, sigGKP, etad, k, ErrProb3Sigma, ErrProb2Sigma )
+
+% This function simulates Outer Leaves
 XerrOuter = zeros(k,1);
 ZerrOuter = zeros(k,1);
 
