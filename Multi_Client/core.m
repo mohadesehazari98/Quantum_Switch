@@ -1,5 +1,6 @@
 function [Rate] = core(k_total, k_vector, user, L, L_Inner, sigGKP, etad, N, round_num)
 
+% searching for the maximum switch throughput
 comb_vec = two_combinations(user);
 L_inter_Repeater = [0.5,1,2,2.5,5];
 v_simulated = [7,6,5,4,3] .* (sqrt(pi)/20);
