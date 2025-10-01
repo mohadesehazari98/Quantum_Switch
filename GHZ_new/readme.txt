@@ -6,5 +6,7 @@ ABC_Estimate.m >> find the optimum allocation
     {
         SecretKey6StateGHZEndToEnd.m >> calculate the six state protocol rate for three links, distributing GHZ states 
             {
-                GHZ_InnerOuter.m calculates the logical Z/X error for a given client }}
+                GHZ_InnerOuter.m calculates the logical Z/X error for a given client 
+            }
+    }
 
