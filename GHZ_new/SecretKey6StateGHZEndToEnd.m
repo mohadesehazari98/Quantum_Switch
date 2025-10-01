@@ -46,8 +46,8 @@ binary_m = dec2bin(0:1:2^(NoLinks)-1);
 %probability.
 for i=1:2^(NoLinks)
     m = zeros(1,NoLinks);
-    for k=1:NoLinks
-        m(k)=str2double(binary_m(i,k));
+    for nlink=1:NoLinks
+        m(nlink)=str2double(binary_m(i,nlink));
     end
     MultiZ=1;
     MultiX=1;
